@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MyZoo</string>
+
+    <string name="navigation_drawer_open">Ouvrir</string>
+    <string name="navigation_drawer_close">Fermer</string>
+
+    <string name="action_settings">Paramètre</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour au premier fragment</string>
+
+    <string name="home">Accueil</string>
+    <string name="favories">Mes Favories</string>
+    <string name="theme">Thèmes</string>
+    <string name="animals">Animaux</string>
+    <string name="contact">Contact Us</string>
+    <string name="map">Map</string>
+
+</resources>
