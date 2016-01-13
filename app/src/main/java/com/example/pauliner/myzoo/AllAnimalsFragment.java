@@ -150,33 +150,28 @@ public class AllAnimalsFragment extends Fragment {
         bt_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et.getText().toString().trim().length() == 0) {
-                    Toast.makeText(thiscontext, "Préciser l'animal recherché", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    lv.setAdapter(animalAdapter);
-                    LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
-                        @Override
-                        public void animalLoad(List<Animal> animalsSrv) {
-                            animals.clear();
-                            animals.addAll(animalsSrv);
-                            animalAdapter.notifyDataSetChanged();
-                            if (animalsSrv.size() == 0) {
-                                tv.setText("Aucun résultat");
+                lv.setAdapter(animalAdapter);
+                LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
+                    @Override
+                    public void animalLoad(List<Animal> animalsSrv) {
+                        animals.clear();
+                        animals.addAll(animalsSrv);
+                        animalAdapter.notifyDataSetChanged();
+                        if (animalsSrv.size() == 0) {
+                            tv.setText("Aucun résultat");
+                        }
+                        else {
+                            if (animalsSrv.size() == 1) {
+                                tv.setText(animalsSrv.size() + " résultat");
                             }
                             else {
-                                if (animalsSrv.size() == 1) {
-                                    tv.setText(animalsSrv.size() + " résultat");
-                                }
-                                else {
-                                    tv.setText(animalsSrv.size() + " résultats");
-                                }
+                                tv.setText(animalsSrv.size() + " résultats");
                             }
                         }
-                    }, "");
-                    async.execute();
-                    et.setText("");
-                }
+                    }
+                }, "");
+                async.execute();
+                et.setText("");
             }
         });
 

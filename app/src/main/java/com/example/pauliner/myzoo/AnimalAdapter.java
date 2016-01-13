@@ -1,10 +1,12 @@
 package com.example.pauliner.myzoo;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -14,11 +16,13 @@ import java.util.List;
  */
 public class AnimalAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
+    private Context mContext;
     private List<Animal> animals;
 
     public AnimalAdapter(Context context, List<Animal> animals) {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.animals = animals;
+        this.mContext = context;
     }
 
     @Override
@@ -46,6 +50,8 @@ public class AnimalAdapter extends BaseAdapter {
 
             vh.tv_animal = (TextView) rowView.findViewById(R.id.tv_animal);
 
+            vh.iv = (ImageView) rowView.findViewById(R.id.iv);
+
             rowView.setTag(vh);
         }
         else {
@@ -53,13 +59,19 @@ public class AnimalAdapter extends BaseAdapter {
         }
 
         vh.animal = (Animal) getItem(position);
+
         vh.tv_animal.setText(vh.animal.getName());
+
+        Resources res = mContext.getResources();
+        int resourceId = res.getIdentifier(vh.animal.getImg(), "drawable", mContext.getPackageName());
+        vh.iv.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
 
         return rowView;
     }
 
     public static class ViewHolder {
         public TextView tv_animal;
+        public ImageView iv;
         public Animal animal;
     }
 }
