@@ -19,52 +19,48 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link AllAnimalsFragment.OnFragmentInteractionListener} interface
+ * {@link TAnimalFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AllAnimalsFragment#newInstance} factory method to
+ * Use the {@link TAnimalFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AllAnimalsFragment extends Fragment {
+public class TAnimalFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    private int mParam1;
 
     private View myFragmentView;
     private ArrayList<Animal> animals;
     public AnimalAdapter animalAdapter;
-    private EditText et;
-    private Button bt;
-    private Button bt_reset;
-    private ListView lv;
-    private TextView tv;
+    private EditText et_tanimal;
+    private Button bt_tanimal;
+    private Button bt_reset_tanimal;
+    private ListView lv_tanimal;
+    private TextView tv_tanimal;
     private Context thiscontext;
+
+    private OnFragmentInteractionListener mListener;
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AllAnimalsFragment.
+     * @return A new instance of fragment TAnimalFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AllAnimalsFragment newInstance(String param1, String param2) {
-        AllAnimalsFragment fragment = new AllAnimalsFragment();
+    public static TAnimalFragment newInstance(int param1) {
+        TAnimalFragment fragment = new TAnimalFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public AllAnimalsFragment() {
+    public TAnimalFragment() {
         // Required empty public constructor
     }
 
@@ -72,8 +68,7 @@ public class AllAnimalsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getInt(ARG_PARAM1);
         }
     }
 
@@ -81,18 +76,18 @@ public class AllAnimalsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         thiscontext = container.getContext();
-        myFragmentView = inflater.inflate(R.layout.fragment_all_animals, container, false);
+        myFragmentView = inflater.inflate(R.layout.fragment_tanimal, container, false);
 
         animals = new ArrayList<>();
         animalAdapter = new AnimalAdapter(thiscontext, animals);
 
-        et = (EditText) myFragmentView.findViewById(R.id.et);
-        bt = (Button) myFragmentView.findViewById(R.id.bt);
-        bt_reset = (Button) myFragmentView.findViewById(R.id.bt_reset);
-        lv = (ListView) myFragmentView.findViewById(R.id.lv);
-        tv = (TextView) myFragmentView.findViewById(R.id.tv);
+        et_tanimal = (EditText) myFragmentView.findViewById(R.id.et_tanimal);
+        bt_tanimal = (Button) myFragmentView.findViewById(R.id.bt_tanimal);
+        bt_reset_tanimal = (Button) myFragmentView.findViewById(R.id.bt_reset_tanimal);
+        lv_tanimal = (ListView) myFragmentView.findViewById(R.id.lv_tanimal);
+        tv_tanimal = (TextView) myFragmentView.findViewById(R.id.tv_tanimal);
 
-        lv.setAdapter(animalAdapter);
+        lv_tanimal.setAdapter(animalAdapter);
         LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
             @Override
             public void animalLoad(List<Animal> animalsSrv) {
@@ -100,28 +95,28 @@ public class AllAnimalsFragment extends Fragment {
                 animals.addAll(animalsSrv);
                 animalAdapter.notifyDataSetChanged();
                 if (animalsSrv.size() == 0) {
-                    tv.setText("Aucun résultat");
+                    tv_tanimal.setText("Aucun résultat");
                 }
                 else {
                     if (animalsSrv.size() == 1) {
-                        tv.setText(animalsSrv.size() + " résultat");
+                        tv_tanimal.setText(animalsSrv.size() + " résultat");
                     }
                     else {
-                        tv.setText(animalsSrv.size() + " résultats");
+                        tv_tanimal.setText(animalsSrv.size() + " résultats");
                     }
                 }
             }
         }, "");
         async.execute();
 
-        bt.setOnClickListener(new View.OnClickListener() {
+        bt_tanimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (et.getText().toString().trim().length() == 0) {
+                if (et_tanimal.getText().toString().trim().length() == 0) {
                     Toast.makeText(thiscontext, "Préciser l'animal recherché", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    lv.setAdapter(animalAdapter);
+                    lv_tanimal.setAdapter(animalAdapter);
                     LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
                         @Override
                         public void animalLoad(List<Animal> animalsSrv) {
@@ -129,27 +124,27 @@ public class AllAnimalsFragment extends Fragment {
                             animals.addAll(animalsSrv);
                             animalAdapter.notifyDataSetChanged();
                             if (animalsSrv.size() == 0) {
-                                tv.setText("Aucun résultat");
+                                tv_tanimal.setText("Aucun résultat");
                             }
                             else {
                                 if (animalsSrv.size() == 1) {
-                                    tv.setText(animalsSrv.size() + " résultat");
+                                    tv_tanimal.setText(animalsSrv.size() + " résultat");
                                 }
                                 else {
-                                    tv.setText(animalsSrv.size() + " résultats");
+                                    tv_tanimal.setText(animalsSrv.size() + " résultats");
                                 }
                             }
                         }
-                    }, et.getText().toString().trim());
+                    }, et_tanimal.getText().toString().trim());
                     async.execute();
                 }
             }
         });
 
-        bt_reset.setOnClickListener(new View.OnClickListener() {
+        bt_reset_tanimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lv.setAdapter(animalAdapter);
+                lv_tanimal.setAdapter(animalAdapter);
                 LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
                     @Override
                     public void animalLoad(List<Animal> animalsSrv) {
@@ -157,20 +152,20 @@ public class AllAnimalsFragment extends Fragment {
                         animals.addAll(animalsSrv);
                         animalAdapter.notifyDataSetChanged();
                         if (animalsSrv.size() == 0) {
-                            tv.setText("Aucun résultat");
+                            tv_tanimal.setText("Aucun résultat");
                         }
                         else {
                             if (animalsSrv.size() == 1) {
-                                tv.setText(animalsSrv.size() + " résultat");
+                                tv_tanimal.setText(animalsSrv.size() + " résultat");
                             }
                             else {
-                                tv.setText(animalsSrv.size() + " résultats");
+                                tv_tanimal.setText(animalsSrv.size() + " résultats");
                             }
                         }
                     }
                 }, "");
                 async.execute();
-                et.setText("");
+                et_tanimal.setText("");
             }
         });
 

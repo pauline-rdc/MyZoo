@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +26,12 @@ public class ThemeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ImageView iv_lion;
+    private ImageView iv_bird;
+    private ImageView iv_poisson;
+    private ImageView iv_crocodile;
+    private View myFragmentView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -62,8 +69,46 @@ public class ThemeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_theme, container, false);
+        myFragmentView = inflater.inflate(R.layout.fragment_theme, container, false);
+
+        iv_lion = (ImageView) myFragmentView.findViewById(R.id.iv_lion);
+        iv_bird = (ImageView) myFragmentView.findViewById(R.id.iv_bird);
+        iv_poisson = (ImageView) myFragmentView.findViewById(R.id.iv_poisson);
+        iv_crocodile = (ImageView) myFragmentView.findViewById(R.id.iv_crocodile);
+
+        iv_lion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TAnimalFragment tAnimalFragment = TAnimalFragment.newInstance(1);
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout, tAnimalFragment).commit();
+            }
+        });
+
+        iv_bird.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TAnimalFragment tAnimalFragment = TAnimalFragment.newInstance(2);
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout, tAnimalFragment).commit();
+            }
+        });
+
+        iv_poisson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TAnimalFragment tAnimalFragment = TAnimalFragment.newInstance(3);
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout, tAnimalFragment).commit();
+            }
+        });
+
+        iv_crocodile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TAnimalFragment tAnimalFragment = TAnimalFragment.newInstance(4);
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout, tAnimalFragment).commit();
+            }
+        });
+
+        return myFragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

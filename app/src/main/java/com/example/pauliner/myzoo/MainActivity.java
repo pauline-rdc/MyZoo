@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity implements
         HomeFragment.OnFragmentInteractionListener,
         ThemeFragment.OnFragmentInteractionListener,
         MapFragment.OnFragmentInteractionListener,
-        ContactFragment.OnFragmentInteractionListener {
+        ContactFragment.OnFragmentInteractionListener,
+        TAnimalFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
