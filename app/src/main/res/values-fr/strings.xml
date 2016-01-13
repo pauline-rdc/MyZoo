@@ -24,6 +24,10 @@
         Grâce à notre application vous allez découvrir les thèmes principaux et tous les animaux que nous protégeons.
     </string>
 
+    <!-- All Animals-->
+    <string name="search">Rechercher</string>
+    <string name="reset">Reset</string>
+
     <!-- Contact -->
     <string name="send">Envoyer</string>
     <string name="name">Votre nom et prénom</string>

@@ -24,6 +24,10 @@
         Welcom in the best zoo in France ....
     </string>
 
+    <!-- All Animals-->
+    <string name="search">Search</string>
+    <string name="reset">Reset</string>
+    <string name="resul">results</string>
 
     <!-- Contact -->
     <string name="send">Send</string>

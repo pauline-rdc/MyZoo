@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
-/**
- * Created by Stéphane.e on 13/01/2016.
- */
 public class AnimalAdapter extends BaseAdapter {
     private LayoutInflater mInflater;
     private Context mContext;
@@ -65,6 +63,13 @@ public class AnimalAdapter extends BaseAdapter {
         Resources res = mContext.getResources();
         int resourceId = res.getIdentifier(vh.animal.getImg(), "drawable", mContext.getPackageName());
         vh.iv.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
+
+        vh.iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, vh.animal.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
 
         return rowView;
     }
