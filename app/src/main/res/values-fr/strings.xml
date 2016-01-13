@@ -14,7 +14,8 @@
     <string name="theme">Thèmes</string>
     <string name="animals">Animaux</string>
     <string name="contact">Nous contacter</string>
-    <string name="map">Map</string>
+    <string name="map">Carte</string>
+    <string name="info">Info Pratique</string>
 
     <!-- Home -->
     <string name="visie">Visitez</string>
