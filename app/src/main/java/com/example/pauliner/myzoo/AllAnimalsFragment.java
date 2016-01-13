@@ -7,6 +7,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +35,17 @@ public class AllAnimalsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private View myFragmentView;
+    private ArrayList<Animal> animals;
+    private List<Animal> allAnimals;
+    public AnimalAdapter animalAdapter;
+    private EditText et;
+    private Button bt;
+    private Button bt_reset;
+    private ListView lv;
+    private TextView tv;
+    private Context thiscontext;
 
     /**
      * Use this factory method to create a new instance of
@@ -62,8 +81,106 @@ public class AllAnimalsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_animals, container, false);
+        thiscontext = container.getContext();
+        myFragmentView = inflater.inflate(R.layout.fragment_all_animals, container, false);
+
+        animals = new ArrayList<>();
+        animalAdapter = new AnimalAdapter(thiscontext, animals);
+
+        et = (EditText) myFragmentView.findViewById(R.id.et);
+        bt = (Button) myFragmentView.findViewById(R.id.bt);
+        bt_reset = (Button) myFragmentView.findViewById(R.id.bt_reset);
+        lv = (ListView) myFragmentView.findViewById(R.id.lv);
+        tv = (TextView) myFragmentView.findViewById(R.id.tv);
+
+        lv.setAdapter(animalAdapter);
+        LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
+            @Override
+            public void animalLoad(List<Animal> animalsSrv) {
+                animals.clear();
+                animals.addAll(animalsSrv);
+                animalAdapter.notifyDataSetChanged();
+                if (animalsSrv.size() == 0) {
+                    tv.setText("Aucun résultat");
+                }
+                else {
+                    if (animalsSrv.size() == 1) {
+                        tv.setText(animalsSrv.size() + " résultat");
+                    }
+                    else {
+                        tv.setText(animalsSrv.size() + " résultats");
+                    }
+                }
+            }
+        }, "");
+        async.execute();
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (et.getText().toString().trim().length() == 0) {
+                    Toast.makeText(thiscontext, "Préciser l'animal recherché", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    lv.setAdapter(animalAdapter);
+                    LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
+                        @Override
+                        public void animalLoad(List<Animal> animalsSrv) {
+                            animals.clear();
+                            animals.addAll(animalsSrv);
+                            animalAdapter.notifyDataSetChanged();
+                            if (animalsSrv.size() == 0) {
+                                tv.setText("Aucun résultat");
+                            }
+                            else {
+                                if (animalsSrv.size() == 1) {
+                                    tv.setText(animalsSrv.size() + " résultat");
+                                }
+                                else {
+                                    tv.setText(animalsSrv.size() + " résultats");
+                                }
+                            }
+                        }
+                    }, et.getText().toString().trim());
+                    async.execute();
+                }
+            }
+        });
+
+        bt_reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (et.getText().toString().trim().length() == 0) {
+                    Toast.makeText(thiscontext, "Préciser l'animal recherché", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    lv.setAdapter(animalAdapter);
+                    LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
+                        @Override
+                        public void animalLoad(List<Animal> animalsSrv) {
+                            animals.clear();
+                            animals.addAll(animalsSrv);
+                            animalAdapter.notifyDataSetChanged();
+                            if (animalsSrv.size() == 0) {
+                                tv.setText("Aucun résultat");
+                            }
+                            else {
+                                if (animalsSrv.size() == 1) {
+                                    tv.setText(animalsSrv.size() + " résultat");
+                                }
+                                else {
+                                    tv.setText(animalsSrv.size() + " résultats");
+                                }
+                            }
+                        }
+                    }, "");
+                    async.execute();
+                    et.setText("");
+                }
+            }
+        });
+
+        return myFragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

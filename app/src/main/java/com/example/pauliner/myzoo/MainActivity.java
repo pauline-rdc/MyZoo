@@ -26,6 +26,35 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final ZooBDD zooBDD = new ZooBDD(this);
+
+        zooBDD.open();
+        zooBDD.initialize();
+
+        Theme theme1 = new Theme("Je marche");
+        Theme theme2 = new Theme("Je vole");
+        Theme theme3 = new Theme("Je nage");
+        Theme theme4 = new Theme("Je rampe");
+        zooBDD.insertTheme(theme1);
+        zooBDD.insertTheme(theme2);
+        zooBDD.insertTheme(theme3);
+        zooBDD.insertTheme(theme4);
+
+        Animal animal1 = new Animal("Lion", "Le lion (Panthera leo) est une espèce de mammifères carnivores de la famille des félidés", "0.0.0.1", "tmpsnd1", "tmpimg1", zooBDD.getThemeById(1));
+        Animal animal2 = new Animal("Tigre", "Le tigre (Panthera tigris1) est une espèce de mammifère carnivore de la famille des félidés (Felidae) du genre Panthera", "15.0.0.1", "tmpsnd2", "tmpimg2", zooBDD.getThemeById(1));
+        Animal animal3 = new Animal("Aigle royal", "L'Aigle royal (Aquila chrysaetos) est une espèce de grands rapaces de la famille des Accipitridae", "30.0.0.1", "tmpsnd3", "tmpimg3", zooBDD.getThemeById(2));
+        Animal animal4 = new Animal("Poisson-lune", "Le poisson-lune, aussi appelé môle, est un poisson de la famille des Molidae, au corps circulaire pouvant atteindre 2 mètres et peser jusqu'à 1 000 kg", "45.0.0.1", "tmpsnd4", "tmpimg4", zooBDD.getThemeById(3));
+        Animal animal5 = new Animal("Poisson tigre goliath", "Le poisson tigre goliath (Hydrocynus goliath) ou encore Poisson-chien 1 et appelé localement mbenga est une espèce de poisson d'eau douce", "60.0.0.1", "tmpsnd5", "tmpimg5", zooBDD.getThemeById(3));
+        Animal animal6 = new Animal("Boa constricteur", "Boa constrictor, le Boa constricteur, est une espèce de serpents de la famille des Boidae", "75.0.0.1", "tmpsnd6", "tmpimg6", zooBDD.getThemeById(4));
+
+        zooBDD.insertAnimal(animal1);
+        zooBDD.insertAnimal(animal2);
+        zooBDD.insertAnimal(animal3);
+        zooBDD.insertAnimal(animal4);
+        zooBDD.insertAnimal(animal5);
+        zooBDD.insertAnimal(animal6);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
