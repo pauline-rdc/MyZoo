@@ -14,7 +14,8 @@
     <string name="theme">Thèmes</string>
     <string name="animals">Animaux</string>
     <string name="contact">Nous contacter</string>
-    <string name="map">Map</string>
+    <string name="map">Carte</string>
+    <string name="info">Info Pratique</string>
 
     <!-- Home -->
     <string name="visie">Visitez</string>
@@ -22,6 +23,10 @@
         Bienvenue dans le meilleur Zoo de france.
         Grâce à notre application vous allez découvrir les thèmes principaux et tous les animaux que nous protégeons.
     </string>
+
+    <!-- All Animals-->
+    <string name="search">Rechercher</string>
+    <string name="reset">Reset</string>
 
     <!-- Contact -->
     <string name="send">Envoyer</string>

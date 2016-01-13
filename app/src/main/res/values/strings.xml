@@ -15,7 +15,8 @@
     <string name="theme">Themes</string>
     <string name="animals">All Animals</string>
     <string name="contact">Contact Us</string>
-    <string name="map">Carte</string>
+    <string name="map">Map</string>
+    <string name="info">Practical Information</string>
 
     <!-- Home -->
     <string name="visie">Visit</string>
@@ -23,6 +24,10 @@
         Welcom in the best zoo in France ....
     </string>
 
+    <!-- All Animals-->
+    <string name="search">Search</string>
+    <string name="reset">Reset</string>
+    <string name="resul">results</string>
 
     <!-- Contact -->
     <string name="send">Send</string>
