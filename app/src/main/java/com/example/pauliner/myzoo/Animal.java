@@ -1,8 +1,5 @@
 package com.example.pauliner.myzoo;
 
-/**
- * Created by Stéphane.e on 13/01/2016.
- */
 public class Animal {
     private int id;
     private String name;
