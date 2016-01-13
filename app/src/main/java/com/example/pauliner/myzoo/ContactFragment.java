@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +28,13 @@ public class ContactFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private EditText tx_name;
+    private EditText tx_email;
+    private EditText tx_object;
+    private EditText tx_message;
+    private Button bt_send;
+    private View myFragmentView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,7 +73,42 @@ public class ContactFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact, container, false);
+        myFragmentView = inflater.inflate(R.layout.fragment_contact, container, false);
+
+        bt_send = (Button) myFragmentView.findViewById(R.id.send_message);
+        bt_send.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                tx_message = (EditText) myFragmentView.findViewById(R.id.message);
+                tx_name = (EditText) myFragmentView.findViewById(R.id.name);
+                tx_object = (EditText) myFragmentView.findViewById(R.id.object);
+                tx_email = (EditText) myFragmentView.findViewById(R.id.email);
+
+                if (tx_name.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "No name", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+                if (tx_email.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "No email", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+                if (tx_object.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "No object", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+                if (tx_message.getText().toString().equals("")) {
+                    Toast.makeText(getContext(), "No message", Toast.LENGTH_LONG).show();
+
+                    return;
+                }
+
+                Toast.makeText(getContext(), "Message Send", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        return myFragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
