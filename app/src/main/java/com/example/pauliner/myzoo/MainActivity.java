@@ -16,10 +16,11 @@ public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
         AllAnimalsFragment.OnFragmentInteractionListener,
         AnimalFragment.OnFragmentInteractionListener,
-        ContactFragment.OnFragmentInteractionListener,
         FavoriesFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
-        ThemeFragment.OnFragmentInteractionListener {
+        ThemeFragment.OnFragmentInteractionListener,
+        MapFragment.OnFragmentInteractionListener,
+        ContactFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,18 @@ public class MainActivity extends AppCompatActivity implements
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Class fragmentClass = HomeFragment.class;
+        Fragment fragment = null;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     @Override
@@ -72,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements
         Fragment fragment = null;
 
         Class fragmentClass;
-        fragmentClass = ThemeFragment.class;
+        fragmentClass = HomeFragment.class;
 
         if (id == R.id.home) {
             fragmentClass = HomeFragment.class;
