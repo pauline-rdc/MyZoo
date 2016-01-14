@@ -7,6 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +32,16 @@ public class FavoriesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private View myFragmentView;
+    private ArrayList<Animal> animals;
+    public AnimalAdapter animalAdapter;
+    private EditText et_favoris;
+    private Button bt_favoris;
+    private Button bt_reset_favoris;
+    private ListView lv_favoris;
+    private TextView tv_favoris;
+    private Context thiscontext;
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,7 +80,38 @@ public class FavoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favories, container, false);
+        thiscontext = container.getContext();
+        myFragmentView = inflater.inflate(R.layout.fragment_favories, container, false);
+
+        animals = new ArrayList<>();
+        animalAdapter = new AnimalAdapter(thiscontext, animals);
+
+        lv_favoris = (ListView) myFragmentView.findViewById(R.id.lv_favoris);
+        tv_favoris = (TextView) myFragmentView.findViewById(R.id.tv_favoris);
+
+        lv_favoris.setAdapter(animalAdapter);
+        LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
+            @Override
+            public void animalLoad(List<Animal> animalsSrv) {
+                animals.clear();
+                animals.addAll(animalsSrv);
+                animalAdapter.notifyDataSetChanged();
+                if (animalsSrv.size() == 0) {
+                    tv_favoris.setText("Aucun favoris");
+                }
+                else {
+                    if (animalsSrv.size() == 1) {
+                        tv_favoris.setText(animalsSrv.size() + " résultat");
+                    }
+                    else {
+                        tv_favoris.setText(animalsSrv.size() + " résultats");
+                    }
+                }
+            }
+        }, "", 0);
+        async.execute();
+
+        return myFragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

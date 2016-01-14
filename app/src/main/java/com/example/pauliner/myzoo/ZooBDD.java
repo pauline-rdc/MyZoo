@@ -39,12 +39,19 @@ public class ZooBDD {
     private static final String COL_THM_ANM = "id_thm_anm";
     private static final int NUM_COL_THM_ANM = 6;
 
+    private static final String TABLE_FAVORIS = "table_favoris";
+    private static final String COL_ID_FAV = "id_fav";
+    private static final int NUM_COL_ID_FAV = 0;
+    private static final String COL_ANM_FAV = "id_anm_fav";
+    private static final int NUM_COL_ANM_FAV = 1;
+
     private static SQLiteDatabase bdd;
 
     private static ZooSQLite zooSQLite;
 
     private static Cursor cursorT;
     private static Cursor cursorA;
+    private static Cursor cursorF;
 
     public ZooBDD(Context context) {
         zooSQLite = new ZooSQLite(context, NAME_BDD, null, VERSION_BDD);
@@ -77,6 +84,12 @@ public class ZooBDD {
         values.put(COL_IMG_ANM, animal.getImg());
         values.put(COL_THM_ANM, animal.getThm().getId());
         return bdd.insert(TABLE_ANIMAL, null, values);
+    }
+
+    public static long insertFavoris(Favoris favoris) {
+        ContentValues values = new ContentValues();
+        values.put(COL_THM_ANM, favoris.getAnm().getId());
+        return bdd.insert(TABLE_FAVORIS, null, values);
     }
 
     public static int updateTheme(Theme theme) {
@@ -137,6 +150,39 @@ public class ZooBDD {
         animal.setThm(getThemeById(cursorA.getInt(NUM_COL_THM_ANM)));
 
         return animal;
+    }
+
+    public static Favoris getFavorisById(int id) {
+        cursorF = bdd.query(TABLE_FAVORIS, new String[]{COL_ID_FAV, COL_ANM_FAV}, COL_ID_FAV + " = \"" + id + "\"", null, null, null, null);
+        if (cursorF.getCount() == 0) {
+            return null;
+        }
+
+        cursorF.moveToFirst();
+
+        Favoris favoris = new Favoris();
+        favoris.setId(cursorF.getInt(NUM_COL_ID_FAV));
+        favoris.setAnm(getAnimalById(cursorF.getInt(NUM_COL_ANM_FAV)));
+
+        return favoris;
+    }
+
+    public static ArrayList<Animal> getAnimalFavoris() {
+        animals = new ArrayList<Animal>();
+        cursorF = bdd.query(TABLE_FAVORIS, new String[]{COL_ID_FAV, COL_ANM_FAV}, null, null, null, null, null);
+
+        if (cursorF.getCount() == 0) {
+            return animals;
+        }
+
+        cursorF.moveToFirst();
+        do {
+            Animal animal = getAnimalById(cursorF.getInt(NUM_COL_ANM_FAV));
+            animals.add(animal);
+        }
+        while (cursorF.moveToNext());
+
+        return animals;
     }
 
     public static ArrayList<Theme> getThemeByName(String name) {

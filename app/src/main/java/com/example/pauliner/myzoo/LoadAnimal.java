@@ -17,7 +17,7 @@ public class LoadAnimal extends AsyncTask {
     public LoadAnimal(CallBack callback, String name) {
         this.callback = callback;
         this.name = name;
-        this.theme = 0;
+        this.theme = -1;
     }
 
     public LoadAnimal(CallBack callback, String name, int theme) {
@@ -28,11 +28,16 @@ public class LoadAnimal extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] params) {
-        if (this.theme != 0) {
+        if (this.theme > 0) {
             animalsSrv = ZooBDD.getAnimalByTheme(this.theme, this.name);
         }
         else {
-            animalsSrv = ZooBDD.getAnimalByName(this.name);
+            if (this.theme != 0) {
+                animalsSrv = ZooBDD.getAnimalByName(this.name);
+            }
+            else {
+                animalsSrv = ZooBDD.getAnimalFavoris();
+            }
         }
         return null;
     }
