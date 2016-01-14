@@ -43,7 +43,7 @@
                     android:layout_toRightOf="@+id/iv_lion"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/bird"/>
+                    android:src="@drawable/aigle"/>
             </LinearLayout>
 
             <LinearLayout
@@ -64,7 +64,7 @@
                     android:layout_below="@+id/iv_lion"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/crocodile"/>
+                    android:src="@drawable/crocodile2"/>
 
                 <ImageView
                     android:id="@+id/iv_poisson"
@@ -74,7 +74,7 @@
                     android:layout_toRightOf="@+id/iv_crocodile"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/poisson"/>
+                    android:src="@drawable/aqua"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
