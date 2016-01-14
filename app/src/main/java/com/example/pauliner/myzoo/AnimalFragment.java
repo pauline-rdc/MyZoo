@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,7 @@ public class AnimalFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
+    private int mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
@@ -36,10 +37,10 @@ public class AnimalFragment extends Fragment {
      * @return A new instance of fragment AnimalFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AnimalFragment newInstance(String param1) {
+    public static AnimalFragment newInstance(int param1) {
         AnimalFragment fragment = new AnimalFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+        args.putInt(ARG_PARAM1, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -48,11 +49,15 @@ public class AnimalFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public FragmentManager getFm() {
+        return getFragmentManager();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam1 = getArguments().getInt(ARG_PARAM1);
         }
     }
 

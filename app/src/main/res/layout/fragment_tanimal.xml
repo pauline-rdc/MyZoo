@@ -30,25 +30,36 @@
                     android:id="@+id/et_tanimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Recherche"/>
+                    android:layout_weight="1.4"
+                    android:hint="Search"/>
 
                 <Button
                     android:id="@+id/bt_tanimal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
-                    android:text="Search"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="?attr/colorPrimary"
+                    android:text="Search"
+                    android:textColor="#ffffff"/>
 
                 <Button
                     android:id="@+id/bt_reset_tanimal"
-                    android:layout_width="wrap_content"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:text="Reset"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:background="?attr/colorPrimary"
+                    android:text="@string/reset"
+                    android:textColor="#ffffff"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tv_tanimal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorAccent"/>
 
             <ListView
                 android:id="@+id/lv_tanimal"

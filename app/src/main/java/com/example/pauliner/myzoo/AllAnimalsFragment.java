@@ -85,7 +85,6 @@ public class AllAnimalsFragment extends Fragment {
 
         animals = new ArrayList<>();
         animalAdapter = new AnimalAdapter(thiscontext, animals);
-
         et = (EditText) myFragmentView.findViewById(R.id.et);
         bt = (Button) myFragmentView.findViewById(R.id.bt);
         bt_reset = (Button) myFragmentView.findViewById(R.id.bt_reset);

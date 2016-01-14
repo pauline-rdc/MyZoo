@@ -1,26 +1,23 @@
 package com.example.pauliner.myzoo;
 
-import android.net.Uri;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class AnimalActivity extends AppCompatActivity implements
-        NavigationView.OnNavigationItemSelectedListener,
-        AllAnimalsFragment.OnFragmentInteractionListener,
-        AnimalFragment.OnFragmentInteractionListener,
-        FavoriesFragment.OnFragmentInteractionListener,
-        HomeFragment.OnFragmentInteractionListener,
-        ThemeFragment.OnFragmentInteractionListener,
-        MapFragment.OnFragmentInteractionListener,
-        ContactFragment.OnFragmentInteractionListener {
+public class AnimalActivity extends AppCompatActivity {
+
+    private Button bt_activity;
+    private ImageView iv_detail;
+    private TextView theme;
+    private TextView animal_name;
+    private TextView description_animal;
+    private Button animal_sound;
+    private Button bt_animal_map;
 
     public AnimalActivity() {
 
@@ -31,120 +28,32 @@ public class AnimalActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animal);
 
-        final ZooBDD zooBDD = new ZooBDD(this);
+        bt_activity = (Button) findViewById(R.id.bt_activity);
+        iv_detail = (ImageView) findViewById(R.id.iv_detail);
+        theme = (TextView) findViewById(R.id.theme);
+        animal_name = (TextView) findViewById(R.id.animal_name);
+        description_animal = (TextView) findViewById(R.id.description_animal);
+        animal_sound = (Button) findViewById(R.id.animal_sound);
+        bt_animal_map = (Button) findViewById(R.id.bt_animal_map);
 
-        zooBDD.open();
-        zooBDD.initialize();
+        Animal animal = ZooBDD.getAnimalById(getIntent().getIntExtra("id", 0));
 
-        Theme theme1 = new Theme("Je marche");
-        Theme theme2 = new Theme("Je vole");
-        Theme theme3 = new Theme("Je nage");
-        Theme theme4 = new Theme("Je rampe");
-        zooBDD.insertTheme(theme1);
-        zooBDD.insertTheme(theme2);
-        zooBDD.insertTheme(theme3);
-        zooBDD.insertTheme(theme4);
+        Resources res = this.getResources();
+        int resourceId = res.getIdentifier(animal.getImg(), "drawable", this.getPackageName());
+        iv_detail.setImageDrawable(res.getDrawable(resourceId, this.getTheme()));
 
-        Animal animal1 = new Animal("Lion", "Le lion (Panthera leo) est une espèce de mammifères carnivores de la famille des félidés", "0.0.0.1", "tmpsnd1", "lion", zooBDD.getThemeById(1));
-        Animal animal2 = new Animal("Tigre", "Le tigre (Panthera tigris1) est une espèce de mammifère carnivore de la famille des félidés (Felidae) du genre Panthera", "15.0.0.1", "tmpsnd2", "lion", zooBDD.getThemeById(1));
-        Animal animal3 = new Animal("Aigle royal", "L'Aigle royal (Aquila chrysaetos) est une espèce de grands rapaces de la famille des Accipitridae", "30.0.0.1", "tmpsnd3", "bird", zooBDD.getThemeById(2));
-        Animal animal4 = new Animal("Poisson-lune", "Le poisson-lune, aussi appelé môle, est un poisson de la famille des Molidae, au corps circulaire pouvant atteindre 2 mètres et peser jusqu'à 1 000 kg", "45.0.0.1", "tmpsnd4", "poisson", zooBDD.getThemeById(3));
-        Animal animal5 = new Animal("Poisson tigre goliath", "Le poisson tigre goliath (Hydrocynus goliath) ou encore Poisson-chien 1 et appelé localement mbenga est une espèce de poisson d'eau douce", "60.0.0.1", "tmpsnd5", "poisson", zooBDD.getThemeById(3));
-        Animal animal6 = new Animal("Boa constricteur", "Boa constrictor, le Boa constricteur, est une espèce de serpents de la famille des Boidae", "75.0.0.1", "tmpsnd6", "crocodile", zooBDD.getThemeById(4));
+        theme.setText(animal.getThm().getName());
 
-        zooBDD.insertAnimal(animal1);
-        zooBDD.insertAnimal(animal2);
-        zooBDD.insertAnimal(animal3);
-        zooBDD.insertAnimal(animal4);
-        zooBDD.insertAnimal(animal5);
-        zooBDD.insertAnimal(animal6);
+        animal_name.setText(animal.getName());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        description_animal.setText(animal.getDesc());
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Fragment fragment = null;
-
-        Class fragmentClass;
-        fragmentClass = HomeFragment.class;
-
-        if (id == R.id.home) {
-            fragmentClass = HomeFragment.class;
-        }
-        else if (id == R.id.theme) {
-            fragmentClass = ThemeFragment.class;
-        }
-        else if (id == R.id.animals) {
-            fragmentClass = AllAnimalsFragment.class;
-        }
-        else if (id == R.id.favories) {
-            fragmentClass = FavoriesFragment.class;
-        }
-        else if (id == R.id.contact) {
-            fragmentClass = ContactFragment.class;
-        }
-        else if (id == R.id.map) {
-            fragmentClass = MapFragment.class;
-        }
-
-        try {
-            fragment = (Fragment) fragmentClass.newInstance();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
+        bt_activity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
