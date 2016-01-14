@@ -1,6 +1,7 @@
 package com.example.pauliner.myzoo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -67,7 +67,9 @@ public class AnimalAdapter extends BaseAdapter {
         vh.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, vh.animal.toString(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, AnimalActivity.class);
+                intent.putExtra("id", vh.animal.getId());
+                mContext.startActivity(intent);
             }
         });
 

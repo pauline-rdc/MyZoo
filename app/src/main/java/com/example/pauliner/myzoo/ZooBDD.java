@@ -184,4 +184,30 @@ public class ZooBDD {
 
         return animals;
     }
+
+    public static ArrayList<Animal> getAnimalByTheme(int theme, String name) {
+        animals = new ArrayList<Animal>();
+        cursorA = bdd.query(TABLE_ANIMAL, new String[]{COL_ID_ANM, COL_NAME_ANM, COL_DESC_ANM, COL_LOC_ANM, COL_SND_ANM, COL_IMG_ANM, COL_THM_ANM}, COL_THM_ANM + " = \"" + theme + "\" AND " + COL_NAME_ANM + " LIKE \"%" + name + "%\"", null, null, null, null);
+
+        if (cursorA.getCount() == 0) {
+            return animals;
+        }
+
+        cursorA.moveToFirst();
+        do {
+            Animal animal = new Animal();
+            animal.setId(cursorA.getInt(NUM_COL_ID_ANM));
+            animal.setName(cursorA.getString(NUM_COL_NAME_ANM));
+            animal.setDesc(cursorA.getString(NUM_COL_DESC_ANM));
+            animal.setLoc(cursorA.getString(NUM_COL_LOC_ANM));
+            animal.setSnd(cursorA.getString(NUM_COL_SND_ANM));
+            animal.setImg(cursorA.getString(NUM_COL_IMG_ANM));
+            animal.setThm(getThemeById(cursorA.getInt(NUM_COL_THM_ANM)));
+
+            animals.add(animal);
+        }
+        while (cursorA.moveToNext());
+
+        return animals;
+    }
 }

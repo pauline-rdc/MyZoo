@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.4"
-                    android:hint="@string/search"/>
+                    android:hint="Search"/>
 
                 <Button
                     android:id="@+id/bt"
@@ -41,7 +41,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"
                     android:background="?attr/colorPrimary"
-                    android:text="@string/search"
+                    android:text="Search"
                     android:textColor="#ffffff"/>
 
                 <Button

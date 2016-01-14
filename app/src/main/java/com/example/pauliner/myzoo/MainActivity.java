@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity implements
         ThemeFragment.OnFragmentInteractionListener,
         MapFragment.OnFragmentInteractionListener,
         ContactFragment.OnFragmentInteractionListener,
-        TAnimalFragment.OnFragmentInteractionListener {
+        TAnimalFragment.OnFragmentInteractionListener,
+        InfosFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements
         }
         else if (id == R.id.map) {
             fragmentClass = MapFragment.class;
+        }
+        else if (id == R.id.info) {
+            fragmentClass = InfosFragment.class;
         }
 
         try {

@@ -41,6 +41,7 @@ public class TAnimalFragment extends Fragment {
     private ListView lv_tanimal;
     private TextView tv_tanimal;
     private Context thiscontext;
+    private int idTheme;
 
     private OnFragmentInteractionListener mListener;
 
@@ -75,6 +76,7 @@ public class TAnimalFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        idTheme = mParam1;
         thiscontext = container.getContext();
         myFragmentView = inflater.inflate(R.layout.fragment_tanimal, container, false);
 
@@ -106,7 +108,7 @@ public class TAnimalFragment extends Fragment {
                     }
                 }
             }
-        }, "");
+        }, "", idTheme);
         async.execute();
 
         bt_tanimal.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +137,7 @@ public class TAnimalFragment extends Fragment {
                                 }
                             }
                         }
-                    }, et_tanimal.getText().toString().trim());
+                    }, et_tanimal.getText().toString().trim(), idTheme);
                     async.execute();
                 }
             }
@@ -163,7 +165,7 @@ public class TAnimalFragment extends Fragment {
                             }
                         }
                     }
-                }, "");
+                }, "", idTheme);
                 async.execute();
                 et_tanimal.setText("");
             }
