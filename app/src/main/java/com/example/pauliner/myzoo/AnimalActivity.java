@@ -18,6 +18,7 @@ public class AnimalActivity extends AppCompatActivity {
     private TextView description_animal;
     private Button animal_sound;
     private Button bt_animal_map;
+    private Button animal_favoris;
 
     public AnimalActivity() {
 
@@ -35,8 +36,16 @@ public class AnimalActivity extends AppCompatActivity {
         description_animal = (TextView) findViewById(R.id.description_animal);
         animal_sound = (Button) findViewById(R.id.animal_sound);
         bt_animal_map = (Button) findViewById(R.id.bt_animal_map);
+        animal_favoris = (Button) findViewById(R.id.animal_favoris);
 
         Animal animal = ZooBDD.getAnimalById(getIntent().getIntExtra("id", 0));
+
+        if (ZooBDD.isFavoris(getIntent().getIntExtra("id", 0))) {
+            animal_favoris.setText("Supprimer des favoris");
+        }
+        else {
+            animal_favoris.setText("Ajouter aux favoris");
+        }
 
         Resources res = this.getResources();
         int resourceId = res.getIdentifier(animal.getImg(), "drawable", this.getPackageName());
@@ -53,6 +62,19 @@ public class AnimalActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        animal_favoris.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (ZooBDD.trtFavoris(getIntent().getIntExtra("id", 0)) == "add") {
+                    animal_favoris.setText("Supprimer des favoris");
+                }
+                else {
+                    animal_favoris.setText("Ajouter aux favoris");
+                }
             }
         });
     }

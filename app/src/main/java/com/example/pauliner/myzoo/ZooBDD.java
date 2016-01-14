@@ -88,7 +88,7 @@ public class ZooBDD {
 
     public static long insertFavoris(Favoris favoris) {
         ContentValues values = new ContentValues();
-        values.put(COL_THM_ANM, favoris.getAnm().getId());
+        values.put(COL_ANM_FAV, favoris.getAnm().getId());
         return bdd.insert(TABLE_FAVORIS, null, values);
     }
 
@@ -115,6 +115,10 @@ public class ZooBDD {
 
     public static int removeAnimal(Animal animal) {
         return bdd.delete(TABLE_ANIMAL, COL_ID_ANM + " = " + animal.getId(), null);
+    }
+
+    public static int removeFavoris(Favoris favoris) {
+        return bdd.delete(TABLE_FAVORIS, COL_ID_FAV + " = " + favoris.getId(), null);
     }
 
     public static Theme getThemeById(int id) {
@@ -152,8 +156,8 @@ public class ZooBDD {
         return animal;
     }
 
-    public static Favoris getFavorisById(int id) {
-        cursorF = bdd.query(TABLE_FAVORIS, new String[]{COL_ID_FAV, COL_ANM_FAV}, COL_ID_FAV + " = \"" + id + "\"", null, null, null, null);
+    public static Favoris getFavorisByAnimal(int id) {
+        cursorF = bdd.query(TABLE_FAVORIS, new String[]{COL_ID_FAV, COL_ANM_FAV}, COL_ANM_FAV + " = \"" + id + "\"", null, null, null, null);
         if (cursorF.getCount() == 0) {
             return null;
         }
@@ -165,6 +169,38 @@ public class ZooBDD {
         favoris.setAnm(getAnimalById(cursorF.getInt(NUM_COL_ANM_FAV)));
 
         return favoris;
+    }
+
+    public static boolean isFavoris(int id) {
+        cursorF = bdd.query(TABLE_FAVORIS, new String[]{COL_ID_FAV, COL_ANM_FAV}, null, null, null, null, null);
+        boolean favoris = false;
+        if (cursorF.getCount() == 0) {
+            return favoris;
+        }
+
+        cursorF.moveToFirst();
+        do {
+            Animal animal = getAnimalById(cursorF.getInt(NUM_COL_ANM_FAV));
+            if (animal.getId() == id) {
+                favoris = true;
+            }
+        }
+        while (cursorF.moveToNext());
+
+        return favoris;
+    }
+
+    public static String trtFavoris(int id) {
+        if (isFavoris(id)) {
+            removeFavoris(getFavorisByAnimal(id));
+            return "delete";
+        }
+        else {
+            Favoris favoris = new Favoris();
+            favoris.setAnm(getAnimalById(id));
+            insertFavoris(favoris);
+            return "add";
+        }
     }
 
     public static ArrayList<Animal> getAnimalFavoris() {
