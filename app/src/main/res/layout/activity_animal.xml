@@ -30,11 +30,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_height="45dp"
                 android:background="?attr/colorPrimary"
                 android:orientation="horizontal"
-                android:paddingBottom="1dp">
+                android:paddingBottom="1dp"
+                >
 
                 <TextView
                     android:id="@+id/theme"
@@ -77,39 +77,47 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="45dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="#FFFFFF">
 
                 <Button
-                    android:id="@+id/animal_sound"
+                    android:id="@+id/animal_favoris"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="?attr/colorPrimary"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:text="Sound Animal"
-                    android:textColor="#ffffff"/>
+                    android:text="Add Favoris"
+                    android:textColor="#ffffff"
+                    android:layout_margin="3dp"/>
 
                 <Button
                     android:id="@+id/bt_animal_map"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:background="?attr/colorPrimary"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:text="See Map"
-                    android:textColor="#ffffff"/>
+                    android:textColor="#ffffff"
+                    android:layout_margin="3dp"/>
+
+                <Button
+                    android:id="@+id/bt_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?attr/colorPrimary"
+                    android:text="Retour"
+                    android:textColor="#ffffff"
+                    android:layout_margin="3dp"/>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Retour"/>
 </RelativeLayout>
