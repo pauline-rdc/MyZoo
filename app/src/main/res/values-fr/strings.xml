@@ -48,4 +48,9 @@
     <string name="info_tarif_child">enfant ( -13 ans) : 10 €</string>
     <string name="info_horraire"> 9h - 18h</string>
 
+    <string name="retour">Retour</string>
+    <string name="see_map">Voir MAP</string>
+    <string name="add_favoris">Ajout Favoris</string>
+
+
 </resources>
