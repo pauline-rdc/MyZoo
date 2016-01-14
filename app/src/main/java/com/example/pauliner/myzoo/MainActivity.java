@@ -56,9 +56,14 @@ public class MainActivity extends AppCompatActivity implements
         Animal animal11 = new Animal("Leopard", "Le léopard (Panthera pardus) ou panthère est une espèce de félins de la sous-famille des panthérinés. Ce félin présente un pelage fauve tacheté de rosettes ; une forme mélanique existe également. ", "75.0.0.4", "tmpsnd9", "leopard", zooBDD.getThemeById(1));
         Animal animal12 = new Animal("Chouette", "Chouette est le nom vernaculaire de certains oiseaux de la famille des Strigidaes, qui regroupe environ 200 espèces, caractérisées comme des rapaces solitaires et nocturnes.", "75.0.0.8", "tmpsnd9", "chouette", zooBDD.getThemeById(2));
         Animal animal13 = new Animal("Grand Duc", "Le Hibou grand-duc appelé aussi Grand-duc d'Europe (Bubo bubo) est une espèce de rapaces nocturnes que l'on rencontre notamment en Europe. Il ne doit pas être confondu avec le Grand-duc d'Amérique. On l'appelle Eagle Owl en anglais.", "75.0.0.8", "tmpsnd9", "grand_duc", zooBDD.getThemeById(2));
-        Animal animal14 = new Animal("Mouette", "On nomme mouettes les oiseaux de plusieurs genres de la sous-famille des Larinae et de la tribu des Larini, qui comprend aussi les goélands", "75.0.0.8", "tmpsnd9", "mouette", zooBDD.getThemeById(2));
-        Animal animal15 = new Animal("Oies", "Les oies forment un groupe d'oiseaux appartenant à la famille des anatidés parmi laquelle on trouve aussi les cygnes et les canards", "75.0.0.8", "tmpsnd9", "oies", zooBDD.getThemeById(2));
-        Animal animal16 = new Animal("Pelicans", "Les pélicans forment le genre d'oiseaux Pelecanus, unique représentant de la famille des Pelecanidae (ou pélécanidés) qui compte huit espèces.", "75.0.0.8", "tmpsnd9", "pelican", zooBDD.getThemeById(2));
+        Animal animal14 = new Animal("Mouette", "On nomme mouettes les oiseaux de plusieurs genres de la sous-famille des Larinae et de la tribu des Larini, qui comprend aussi les goélands", "75.0.0.8", "tmpsnd14", "mouette", zooBDD.getThemeById(2));
+        Animal animal15 = new Animal("Oies", "Les oies forment un groupe d'oiseaux appartenant à la famille des anatidés parmi laquelle on trouve aussi les cygnes et les canards", "75.0.0.8", "tmpsnd15", "oies", zooBDD.getThemeById(2));
+        Animal animal16 = new Animal("Pelicans", "Les pélicans forment le genre d'oiseaux Pelecanus, unique représentant de la famille des Pelecanidae (ou pélécanidés) qui compte huit espèces.", "75.0.0.8", "tmpsnd16", "pelican", zooBDD.getThemeById(2));
+        Animal animal17 = new Animal("Méduse", "Les méduses sont généralement des prédateurs, elles paralysent leurs proies grâce à leurs cnidocytes et peuvent posséder des structures sensorielles très élaborées comme des ocelles.", "75.0.0.8", "tmpsnd17", "meduse", zooBDD.getThemeById(3));
+        Animal animal18 = new Animal("Python Vert", "Ce python vert arboricole est caractérisé par un corps relativement mince. La queue relativement longue représente environ 14 % de sa longueur totale. La tête est large. ", "75.0.0.8", "tmpsnd17", "python", zooBDD.getThemeById(4));
+        Animal animal19 = new Animal("Tigre Blanc", "Le tigre blanc, parfois aussi appelé tigre blanc royal, est une mutation colorée du tigre (Panthera tigris), un mammifère carnivore de la famille des Félidés. Son pelage est blanc avec des rayures plus ou moins noires.", "75.0.0.8", "tmpsnd17", "tigre_blanc", zooBDD.getThemeById(1));
+        Animal animal20 = new Animal("Léopard des neiges", "L'once (Panthera uncia), aussi appelé irbis, panthère des neiges ou léopard des neiges est un félin de la sous-famille des panthérinés. On le rencontre dans les vallées isolées des hautes montagnes d'Asie centrale, de Sibérie centrale", "75.0.0.8", "tmpsnd17", "snow_leopard", zooBDD.getThemeById(1));
+        Animal animal21 = new Animal("Couleuvre", "Couleuvre est un nom vernaculaire ambigu désignant certains serpents généralement non venimeux1, à la différence des vipères. Ce sont souvent des espèces diurnes.", "75.0.0.8", "tmpsnd17", "couleuvre", zooBDD.getThemeById(4));
 
         zooBDD.insertAnimal(animal1);
         zooBDD.insertAnimal(animal2);
@@ -76,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements
         zooBDD.insertAnimal(animal14);
         zooBDD.insertAnimal(animal15);
         zooBDD.insertAnimal(animal16);
+        zooBDD.insertAnimal(animal17);
+        zooBDD.insertAnimal(animal18);
+        zooBDD.insertAnimal(animal19);
+        zooBDD.insertAnimal(animal20);
+        zooBDD.insertAnimal(animal21);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
