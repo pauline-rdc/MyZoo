@@ -49,4 +49,8 @@
     <string name="info_tarif_child">child ( -13) : 10 $</string>
     <string name="info_horraire"> 9h - 18h</string>
 
+    <string name="retour">Return</string>
+    <string name="see_map">See MAP</string>
+    <string name="add_favoris">Add Favoris</string>
+
 </resources>

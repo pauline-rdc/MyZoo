@@ -78,43 +78,43 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:background="#FFFFFF"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:background="#FFFFFF">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/animal_favoris"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:background="?attr/colorPrimary"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:text="Add Favoris"
-                    android:textColor="#ffffff"
-                    android:layout_margin="3dp"/>
+                    android:text="@string/add_favoris"
+                    android:textColor="#ffffff"/>
 
                 <Button
                     android:id="@+id/bt_animal_map"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:background="?attr/colorPrimary"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:text="See Map"
-                    android:textColor="#ffffff"
-                    android:layout_margin="3dp"/>
+                    android:text="@string/see_map"
+                    android:textColor="#ffffff"/>
 
                 <Button
                     android:id="@+id/bt_activity"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:background="?attr/colorPrimary"
-                    android:text="Retour"
-                    android:textColor="#ffffff"
-                    android:layout_margin="3dp"/>
+                    android:text="@string/retour"
+                    android:textColor="#ffffff"/>
             </LinearLayout>
         </LinearLayout>
 
