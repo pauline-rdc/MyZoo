@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements
         Animal animal13 = new Animal("Grand Duc", "Le Hibou grand-duc appelé aussi Grand-duc d'Europe (Bubo bubo) est une espèce de rapaces nocturnes que l'on rencontre notamment en Europe. Il ne doit pas être confondu avec le Grand-duc d'Amérique. On l'appelle Eagle Owl en anglais.", "75.0.0.8", "tmpsnd9", "grand_duc", zooBDD.getThemeById(2));
         Animal animal14 = new Animal("Mouette", "On nomme mouettes les oiseaux de plusieurs genres de la sous-famille des Larinae et de la tribu des Larini, qui comprend aussi les goélands", "75.0.0.8", "tmpsnd9", "mouette", zooBDD.getThemeById(2));
         Animal animal15 = new Animal("Oies", "Les oies forment un groupe d'oiseaux appartenant à la famille des anatidés parmi laquelle on trouve aussi les cygnes et les canards", "75.0.0.8", "tmpsnd9", "oies", zooBDD.getThemeById(2));
-        Animal animal16 = new Animal("Pelicans", "Les pélicans forment le genre d'oiseaux Pelecanus, unique représentant de la famille des Pelecanidae (ou pélécanidés) qui compte huit espèces.", "75.0.0.8", "tmpsnd9", "pelicans", zooBDD.getThemeById(2));
+        Animal animal16 = new Animal("Pelicans", "Les pélicans forment le genre d'oiseaux Pelecanus, unique représentant de la famille des Pelecanidae (ou pélécanidés) qui compte huit espèces.", "75.0.0.8", "tmpsnd9", "pelican", zooBDD.getThemeById(2));
 
         zooBDD.insertAnimal(animal1);
         zooBDD.insertAnimal(animal2);
