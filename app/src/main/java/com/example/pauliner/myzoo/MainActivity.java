@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity implements
         ThemeFragment.OnFragmentInteractionListener,
         MapFragment.OnFragmentInteractionListener,
         ContactFragment.OnFragmentInteractionListener,
-        TAnimalFragment.OnFragmentInteractionListener {
+        TAnimalFragment.OnFragmentInteractionListener,
+        InfosFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,9 @@ public class MainActivity extends AppCompatActivity implements
         Animal animal2 = new Animal("Tigre", "Le tigre (Panthera tigris1) est une espèce de mammifère carnivore de la famille des félidés (Felidae) du genre Panthera", "15.0.0.1", "tmpsnd2", "lion", zooBDD.getThemeById(1));
         Animal animal3 = new Animal("Aigle royal", "L'Aigle royal (Aquila chrysaetos) est une espèce de grands rapaces de la famille des Accipitridae", "30.0.0.1", "tmpsnd3", "bird", zooBDD.getThemeById(2));
         Animal animal4 = new Animal("Poisson-lune", "Le poisson-lune, aussi appelé môle, est un poisson de la famille des Molidae, au corps circulaire pouvant atteindre 2 mètres et peser jusqu'à 1 000 kg", "45.0.0.1", "tmpsnd4", "poisson", zooBDD.getThemeById(3));
-        Animal animal5 = new Animal("Poisson tigre goliath", "Le poisson tigre goliath (Hydrocynus goliath) ou encore Poisson-chien 1 et appelé localement mbenga est une espèce de poisson d'eau douce", "60.0.0.1", "tmpsnd5", "poisson", zooBDD.getThemeById(3));
-        Animal animal6 = new Animal("Boa constricteur", "Boa constrictor, le Boa constricteur, est une espèce de serpents de la famille des Boidae", "75.0.0.1", "tmpsnd6", "crocodile", zooBDD.getThemeById(4));
+        Animal animal5 = new Animal("Poisson tigre goliath", "Le poisson tigre goliath (Hydrocynus goliath) ou encore Poisson-chien 1 et appelé localement mbenga est une espèce de poisson d'eau douce", "60.0.0.1", "tmpsnd5", "poisson_tigre", zooBDD.getThemeById(3));
+        Animal animal6 = new Animal("Boa constricteur", "Boa constrictor, le Boa constricteur, est une espèce de serpents de la famille des Boidae", "75.0.0.1", "tmpsnd6", "boa_constriteur", zooBDD.getThemeById(4));
+        Animal animal7 = new Animal("Crocodile", "Les crocodiles vivent dans les régions chaudes. Toutes les espèces - sauf le crocodile marin - fréquentent les eaux douces. Ils vivent immergés dans des cours d'eau stagnante où ils passent leurs journées à guetter leurs proies", "75.0.0.2", "tmpsnd7", "crocodile", zooBDD.getThemeById(4));
 
         zooBDD.insertAnimal(animal1);
         zooBDD.insertAnimal(animal2);
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements
         zooBDD.insertAnimal(animal4);
         zooBDD.insertAnimal(animal5);
         zooBDD.insertAnimal(animal6);
+        zooBDD.insertAnimal(animal7);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -134,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements
         }
         else if (id == R.id.map) {
             fragmentClass = MapFragment.class;
+        }
+        else if (id == R.id.info) {
+            fragmentClass = InfosFragment.class;
         }
 
         try {

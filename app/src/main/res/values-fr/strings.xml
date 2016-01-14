@@ -35,4 +35,22 @@
     <string name="object">Objet de votre message</string>
     <string name="message">Votre message</string>
 
+    <!-- Info -->
+    <string name="adress">Adresse :</string>
+    <string name="horraire">Horraires</string>
+    <string name="tarif">Tarifs :</string>
+    <string name="info_adress">
+        43 rue raspail, 92044 Levallois Perret
+    </string>
+
+    <string name="info_tarif_adult">adulte : 23 €</string>
+    <string name="info_tarif_student">étudient : 15 €</string>
+    <string name="info_tarif_child">enfant ( -13 ans) : 10 €</string>
+    <string name="info_horraire"> 9h - 18h</string>
+
+    <string name="retour">Retour</string>
+    <string name="see_map">Voir MAP</string>
+    <string name="add_favoris">Ajout Favoris</string>
+
+
 </resources>

@@ -36,5 +36,21 @@
     <string name="object">Object of your message</string>
     <string name="message">Your message</string>
 
+    <!-- Info -->
+    <string name="adress">Adress :</string>
+    <string name="horraire">Hourly</string>
+    <string name="tarif">Rate :</string>
+    <string name="info_adress">
+        43 rue raspail, 92044 Levallois Perret
+    </string>
+
+    <string name="info_tarif_adult">adult : 23 $</string>
+    <string name="info_tarif_student">studient : 15 $</string>
+    <string name="info_tarif_child">child ( -13) : 10 $</string>
+    <string name="info_horraire"> 9h - 18h</string>
+
+    <string name="retour">Return</string>
+    <string name="see_map">See MAP</string>
+    <string name="add_favoris">Add Favoris</string>
 
 </resources>
