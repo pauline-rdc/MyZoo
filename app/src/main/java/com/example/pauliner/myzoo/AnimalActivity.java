@@ -31,6 +31,7 @@ public class AnimalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MapActivity.map = false;
         setContentView(R.layout.activity_animal);
 
         mContext = this;
