@@ -36,7 +36,6 @@ public class BackgroundService extends Service implements LocationListener {
         if (locMng.getAllProviders().contains(LocationManager.GPS_PROVIDER)) {
             locMng.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, this);
         }
-        MapActivity.myApplication.getEventBus().post(this);
     }
 
     @Nullable
@@ -53,8 +52,6 @@ public class BackgroundService extends Service implements LocationListener {
         if (MapActivity.map) {
             Toast.makeText(getApplicationContext(), MapActivity.loc, Toast.LENGTH_SHORT).show();
         }
-
-        MapActivity.myApplication.getEventBus().post(this);
     }
 
     @Override

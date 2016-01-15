@@ -8,14 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.squareup.otto.Subscribe;
-
 public class MapActivity extends AppCompatActivity {
 
     private Button bt_retour;
     private String theme_map;
     private ImageView img_map;
-    public static MyApplication myApplication;
     public static String loc;
     public static boolean map;
 
@@ -24,8 +21,6 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         map = true;
 
-        myApplication = new MyApplication();
-        myApplication.onCreate();
         startService(new Intent(this, BackgroundService.class));
         setContentView(R.layout.activity_map);
 
@@ -62,27 +57,5 @@ public class MapActivity extends AppCompatActivity {
 
         int resourceId = res.getIdentifier(drawable_img_map, "drawable", this.getPackageName());
         img_map.setImageDrawable(res.getDrawable(resourceId, this.getTheme()));
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        myApplication.getEventBus().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        myApplication.getEventBus().unregister(this);
-    }
-
-    @Subscribe
-    public void onBackgroundServiceCallBack(final LocationService event) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                loc = event.getLongitude() + "." + event.getLatitude();
-            }
-        });
     }
 }
