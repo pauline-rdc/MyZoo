@@ -76,6 +76,17 @@ public class AnimalAdapter extends BaseAdapter {
             }
         });
 
+        vh.tv_animal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(mContext.getApplicationContext(), AnimalActivity.class);
+                intent.putExtra("id", vh.animal.getId());
+                ((Activity) mContext).finish();
+                mContext.startActivity(intent);
+            }
+        });
+
         return rowView;
     }
 
