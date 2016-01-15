@@ -10,7 +10,7 @@
     <string name="hello_blank_fragment">Bonjour au premier fragment</string>
 
     <string name="home">Accueil</string>
-    <string name="favories">Mes Favories</string>
+    <string name="favories">Mes Favoris</string>
     <string name="theme">Thèmes</string>
     <string name="animals">Animaux</string>
     <string name="contact">Nous contacter</string>
