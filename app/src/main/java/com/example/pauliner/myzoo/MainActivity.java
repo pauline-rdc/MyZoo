@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MapActivity.map = false;
         setContentView(R.layout.activity_main);
 
         final ZooBDD zooBDD = new ZooBDD(this);
