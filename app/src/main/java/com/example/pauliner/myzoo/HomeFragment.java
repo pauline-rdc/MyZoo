@@ -24,7 +24,6 @@ public class HomeFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -45,7 +44,7 @@ public class HomeFragment extends Fragment {
         bt_visit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MapFragment mapFragment = MapFragment.newInstance("", "");
+                MapFragment mapFragment = MapFragment.newInstance();
                 getFragmentManager().beginTransaction().replace(R.id.frame_layout, mapFragment).commit();
             }
         });

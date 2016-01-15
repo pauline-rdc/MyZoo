@@ -3,6 +3,7 @@ package com.example.pauliner.myzoo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,11 +19,12 @@ public class AnimalActivity extends AppCompatActivity {
     private TextView theme;
     private TextView animal_name;
     private TextView description_animal;
-    private Button animal_sound;
+    private ImageView animal_sound;
     private Button bt_animal_map;
     private ImageView animal_favoris;
     private Context mContext;
     private Animal animal;
+    private boolean play;
 
     public AnimalActivity() {
 
@@ -35,6 +37,7 @@ public class AnimalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_animal);
 
         mContext = this;
+        play = true;
 
         //Todo:ecup variables
         bt_activity = (Button) findViewById(R.id.bt_activity);
@@ -42,7 +45,7 @@ public class AnimalActivity extends AppCompatActivity {
         theme = (TextView) findViewById(R.id.theme);
         animal_name = (TextView) findViewById(R.id.animal_name);
         description_animal = (TextView) findViewById(R.id.description_animal);
-        animal_sound = (Button) findViewById(R.id.animal_sound);
+        animal_sound = (ImageView) findViewById(R.id.animal_sound);
         bt_animal_map = (Button) findViewById(R.id.bt_animal_map);
         animal_favoris = (ImageView) findViewById(R.id.animal_favoris);
 
@@ -106,6 +109,28 @@ public class AnimalActivity extends AppCompatActivity {
                     int resourceId = res.getIdentifier("ic_star", "drawable", mContext.getPackageName());
                     animal_favoris.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
                     Toast.makeText(getApplicationContext(), "Supprimé des favoris", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Todo:update favoris
+        animal_sound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(mContext, R.raw.chat);
+                if (play) {
+                    mediaPlayer.start();
+                    Resources res = mContext.getResources();
+                    int resourceId = res.getIdentifier("pause", "drawable", mContext.getPackageName());
+                    animal_sound.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
+                    play = false;
+                }
+                else {
+                    mediaPlayer.pause();
+                    Resources res = mContext.getResources();
+                    int resourceId = res.getIdentifier("play", "drawable", mContext.getPackageName());
+                    animal_sound.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
+                    play = true;
                 }
             }
         });
