@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +26,8 @@ public class HomeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private View myFragmentView;
+    private Button bt_visit;
 
     private OnFragmentInteractionListener mListener;
 
@@ -62,8 +65,19 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        myFragmentView = inflater.inflate(R.layout.fragment_home, container, false);
+        bt_visit = (Button) myFragmentView.findViewById(R.id.bt_visit);
+
+        bt_visit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MapFragment mapFragment = MapFragment.newInstance("", "");
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout, mapFragment).commit();
+            }
+        });
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return myFragmentView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
