@@ -36,6 +36,7 @@ public class AnimalActivity extends AppCompatActivity {
 
         mContext = this;
 
+        //Todo:ecup variables
         bt_activity = (Button) findViewById(R.id.bt_activity);
         iv_detail = (ImageView) findViewById(R.id.iv_detail);
         theme = (TextView) findViewById(R.id.theme);
@@ -47,6 +48,7 @@ public class AnimalActivity extends AppCompatActivity {
 
         animal = ZooBDD.getAnimalById(getIntent().getIntExtra("id", 0));
 
+        // Todo:if the animal is in my favories
         if (ZooBDD.isFavoris(getIntent().getIntExtra("id", 0))) {
             Resources res = this.getResources();
             int resourceId = res.getIdentifier("ic_star_full", "drawable", this.getPackageName());
@@ -63,11 +65,10 @@ public class AnimalActivity extends AppCompatActivity {
         iv_detail.setImageDrawable(res.getDrawable(resourceId, this.getTheme()));
 
         theme.setText(animal.getThm().getName());
-
         animal_name.setText(animal.getName());
-
         description_animal.setText(animal.getDesc());
 
+        // Todo:click return
         bt_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,7 @@ public class AnimalActivity extends AppCompatActivity {
             }
         });
 
+        // Todo:click animal's map
         bt_animal_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +90,7 @@ public class AnimalActivity extends AppCompatActivity {
             }
         });
 
+        // Todo:update favoris
         animal_favoris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

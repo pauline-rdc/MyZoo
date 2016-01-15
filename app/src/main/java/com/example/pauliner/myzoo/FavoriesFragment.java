@@ -36,32 +36,11 @@ public class FavoriesFragment extends Fragment {
     private View myFragmentView;
     private ArrayList<Animal> animals;
     public AnimalAdapter animalAdapter;
-    private EditText et_favoris;
-    private Button bt_favoris;
-    private Button bt_reset_favoris;
     private ListView lv_favoris;
     private TextView tv_favoris;
     private Context thiscontext;
 
     private OnFragmentInteractionListener mListener;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FavoriesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FavoriesFragment newInstance(String param1, String param2) {
-        FavoriesFragment fragment = new FavoriesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     public FavoriesFragment() {
         // Required empty public constructor
@@ -79,7 +58,7 @@ public class FavoriesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Todo:Inflate the layout for this fragment
         thiscontext = container.getContext();
         myFragmentView = inflater.inflate(R.layout.fragment_favories, container, false);
 
@@ -89,6 +68,7 @@ public class FavoriesFragment extends Fragment {
         lv_favoris = (ListView) myFragmentView.findViewById(R.id.lv_favoris);
         tv_favoris = (TextView) myFragmentView.findViewById(R.id.tv_favoris);
 
+        // Todo:load Favoris
         lv_favoris.setAdapter(animalAdapter);
         LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
             @Override
@@ -112,13 +92,6 @@ public class FavoriesFragment extends Fragment {
         async.execute();
 
         return myFragmentView;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
