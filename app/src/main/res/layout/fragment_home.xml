@@ -61,7 +61,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/visit"
+                    android:id="@+id/bt_visit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/colorPrimary"
