@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity implements
         Animal animal19 = new Animal("Tigre Blanc", "Le tigre blanc, parfois aussi appelé tigre blanc royal, est une mutation colorée du tigre (Panthera tigris), un mammifère carnivore de la famille des Félidés. Son pelage est blanc avec des rayures plus ou moins noires.", "75.0.0.8", "tmpsnd17", "tigre_blanc", zooBDD.getThemeById(1));
         Animal animal20 = new Animal("Léopard des neiges", "L'once (Panthera uncia), aussi appelé irbis, panthère des neiges ou léopard des neiges est un félin de la sous-famille des panthérinés. On le rencontre dans les vallées isolées des hautes montagnes d'Asie centrale, de Sibérie centrale", "75.0.0.8", "tmpsnd17", "snow_leopard", zooBDD.getThemeById(1));
         Animal animal21 = new Animal("Couleuvre", "Couleuvre est un nom vernaculaire ambigu désignant certains serpents généralement non venimeux1, à la différence des vipères. Ce sont souvent des espèces diurnes.", "75.0.0.8", "tmpsnd17", "couleuvre", zooBDD.getThemeById(4));
+        Animal animal22 = new Animal("Grand Dauphin", "Le grand dauphin est présent dans toutes les mers du monde, à l'exception des zones arctiques et antarctiques. Il existe deux populations assez distinctes : une côtière et une pélagique.", "75.0.0.8", "tmpsnd17", "dauphin", zooBDD.getThemeById(3));
+        Animal animal23 = new Animal("Requin", "Les requins, squales ou sélachimorphes forment un super-ordre de poissons cartilagineux, possédant cinq à sept fentes branchiales sur les côtés de la tête et les nageoires pectorales qui ne sont pas fusionnés à la tête.", "75.0.0.8", "tmpsnd17", "requin", zooBDD.getThemeById(3));
+        Animal animal24 = new Animal("Poisson Clown", "Les poissons-clowns, ou Amphiprioninae, sont une sous-famille de poissons appartenant à la famille des Pomacentridés.", "75.0.0.8", "tmpsnd17", "poisson_clown", zooBDD.getThemeById(3));
+        Animal animal25 = new Animal("Raie Léopard", "L'aigle de mer-léopard ou raie-léopard (Aetobatus narinari) est une espèce de raie de la famille des Myliobatidae qui se rencontre dans les zones tropicales et subtropicales.", "75.0.0.8", "tmpsnd17", "raie", zooBDD.getThemeById(3));
+        Animal animal26 = new Animal("Gorille", "Les Gorilles, Gorilla, forment un genre de grands singes de la famille des Hominidés. Les mâles, en particulier, peuvent développer une force physique colossale.", "75.0.0.8", "tmpsnd17", "gorille", zooBDD.getThemeById(1));
 
         zooBDD.insertAnimal(animal1);
         zooBDD.insertAnimal(animal2);
@@ -86,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements
         zooBDD.insertAnimal(animal19);
         zooBDD.insertAnimal(animal20);
         zooBDD.insertAnimal(animal21);
+        zooBDD.insertAnimal(animal22);
+        zooBDD.insertAnimal(animal23);
+        zooBDD.insertAnimal(animal24);
+        zooBDD.insertAnimal(animal25);
+        zooBDD.insertAnimal(animal26);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
