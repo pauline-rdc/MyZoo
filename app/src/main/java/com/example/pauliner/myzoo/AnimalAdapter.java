@@ -46,9 +46,7 @@ public class AnimalAdapter extends BaseAdapter {
             rowView = mInflater.inflate(R.layout.animal_cellule, null);
 
             vh = new ViewHolder();
-
             vh.tv_animal = (TextView) rowView.findViewById(R.id.tv_animal);
-
             vh.iv = (ImageView) rowView.findViewById(R.id.iv);
 
             rowView.setTag(vh);
@@ -58,13 +56,13 @@ public class AnimalAdapter extends BaseAdapter {
         }
 
         vh.animal = (Animal) getItem(position);
-
         vh.tv_animal.setText(vh.animal.getName());
 
         Resources res = mContext.getResources();
         int resourceId = res.getIdentifier(vh.animal.getImg(), "drawable", mContext.getPackageName());
         vh.iv.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
 
+        // Todo:click for see the animal
         vh.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +73,6 @@ public class AnimalAdapter extends BaseAdapter {
                 mContext.startActivity(intent);
             }
         });
-
         vh.tv_animal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

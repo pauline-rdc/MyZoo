@@ -21,18 +21,9 @@ import java.util.List;
  * Activities that contain this fragment must implement the
  * {@link AllAnimalsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link AllAnimalsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class AllAnimalsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,24 +37,6 @@ public class AllAnimalsFragment extends Fragment {
     private TextView tv;
     private Context thiscontext;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AllAnimalsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AllAnimalsFragment newInstance(String param1, String param2) {
-        AllAnimalsFragment fragment = new AllAnimalsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     public AllAnimalsFragment() {
         // Required empty public constructor
     }
@@ -71,18 +44,16 @@ public class AllAnimalsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         thiscontext = container.getContext();
+        // Todo:Get ViewFragment
         myFragmentView = inflater.inflate(R.layout.fragment_all_animals, container, false);
 
+        // Todo:initialise variables
         animals = new ArrayList<>();
         animalAdapter = new AnimalAdapter(thiscontext, animals);
         et = (EditText) myFragmentView.findViewById(R.id.et);
@@ -91,6 +62,7 @@ public class AllAnimalsFragment extends Fragment {
         lv = (ListView) myFragmentView.findViewById(R.id.lv);
         tv = (TextView) myFragmentView.findViewById(R.id.tv);
 
+        // Todo:adapter for all animals
         lv.setAdapter(animalAdapter);
         LoadAnimal async = new LoadAnimal(new LoadAnimal.CallBack() {
             @Override
@@ -113,6 +85,7 @@ public class AllAnimalsFragment extends Fragment {
         }, "");
         async.execute();
 
+        // Todo:click for search animal
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +118,7 @@ public class AllAnimalsFragment extends Fragment {
             }
         });
 
+        // Todo:click for reset search
         bt_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -176,12 +150,6 @@ public class AllAnimalsFragment extends Fragment {
         return myFragmentView;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
     @Override
     public void onAttach(Context context) {

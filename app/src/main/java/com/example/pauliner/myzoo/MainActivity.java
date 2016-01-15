@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements
         zooBDD.open();
         zooBDD.initialize();
 
-        //Création des thèmes
+        //Todo:Création des thèmes
 
         Theme theme1 = new Theme("Je marche");
         Theme theme2 = new Theme("Je vole");
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements
         zooBDD.insertTheme(theme3);
         zooBDD.insertTheme(theme4);
 
-        //Ajout des animaux dans la BDD
+        //Todo:Ajout des animaux dans la BDD
 
         Animal animal1 = new Animal("Lion", "Le lion (Panthera leo) est une espèce de mammifères carnivores de la famille des félidés", "0.0.0.1", "tmpsnd1", "lion", zooBDD.getThemeById(1));
         Animal animal2 = new Animal("Tigre", "Le tigre (Panthera tigris1) est une espèce de mammifère carnivore de la famille des félidés (Felidae) du genre Panthera", "15.0.0.1", "tmpsnd2", "tigre", zooBDD.getThemeById(1));
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Todo:Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
 
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements
             e.printStackTrace();
         }
 
-        // Insert the fragment by replacing any existing fragment
+        // Todo:Insert the fragment by replacing any existing fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_layout, fragment).commit();
 
