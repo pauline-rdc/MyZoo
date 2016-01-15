@@ -52,5 +52,6 @@
     <string name="retour">Return</string>
     <string name="see_map">See MAP</string>
     <string name="add_favoris">Add Favoris</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

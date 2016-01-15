@@ -1,5 +1,6 @@
 package com.example.pauliner.myzoo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -67,8 +68,10 @@ public class AnimalAdapter extends BaseAdapter {
         vh.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, AnimalActivity.class);
+
+                Intent intent = new Intent(mContext.getApplicationContext(), AnimalActivity.class);
                 intent.putExtra("id", vh.animal.getId());
+                ((Activity) mContext).finish();
                 mContext.startActivity(intent);
             }
         });
