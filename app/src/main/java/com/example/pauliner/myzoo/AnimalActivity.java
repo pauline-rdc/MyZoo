@@ -25,6 +25,7 @@ public class AnimalActivity extends AppCompatActivity {
     private Context mContext;
     private Animal animal;
     private boolean play;
+    private MediaPlayer mediaPlayer;
 
     public AnimalActivity() {
 
@@ -50,6 +51,11 @@ public class AnimalActivity extends AppCompatActivity {
         animal_favoris = (ImageView) findViewById(R.id.animal_favoris);
 
         animal = ZooBDD.getAnimalById(getIntent().getIntExtra("id", 0));
+
+        Resources ressnd = mContext.getResources();
+        int resourceIdsnd = ressnd.getIdentifier(animal.getSnd(), "raw", mContext.getPackageName());
+
+        mediaPlayer = MediaPlayer.create(mContext, resourceIdsnd);
 
         // Todo:if the animal is in my favories
         if (ZooBDD.isFavoris(getIntent().getIntExtra("id", 0))) {
@@ -117,7 +123,6 @@ public class AnimalActivity extends AppCompatActivity {
         animal_sound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(mContext, R.raw.chat);
                 if (play) {
                     mediaPlayer.start();
                     Resources res = mContext.getResources();
@@ -126,11 +131,17 @@ public class AnimalActivity extends AppCompatActivity {
                     play = false;
                 }
                 else {
-                    mediaPlayer.pause();
-                    Resources res = mContext.getResources();
-                    int resourceId = res.getIdentifier("play", "drawable", mContext.getPackageName());
-                    animal_sound.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
-                    play = true;
+                    if (mediaPlayer.isPlaying()) {
+                        mediaPlayer.pause();
+                        Resources res = mContext.getResources();
+                        int resourceId = res.getIdentifier("play", "drawable", mContext.getPackageName());
+                        animal_sound.setImageDrawable(res.getDrawable(resourceId, mContext.getTheme()));
+                        play = true;
+                    }
+                    else {
+                        mediaPlayer.start();
+                        play = false;
+                    }
                 }
             }
         });
