@@ -41,13 +41,13 @@ public class MapActivity extends AppCompatActivity {
             drawable_img_map = "plan_felin";
         }
         else if (theme_map.equals("Je vole")) {
-            drawable_img_map = "plan_felin";
+            drawable_img_map = "plan_bird";
         }
         else if (theme_map.equals("Je nage")) {
-            drawable_img_map = "plan_felin";
+            drawable_img_map = "plan_aqua";
         }
         else if (theme_map.equals("Je rampe")) {
-            drawable_img_map = "plan_felin";
+            drawable_img_map = "plan_reptil";
         }
 
         int resourceId = res.getIdentifier(drawable_img_map, "drawable", this.getPackageName());
